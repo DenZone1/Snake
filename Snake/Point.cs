@@ -44,11 +44,11 @@ namespace Snake
             }
             else if (direction == Deriction.UP)
             {
-                y = y + offset;
+                y = y - offset;
             }
             else if (direction == Deriction.DOWN)
             {
-                y = y - offset;
+                y = y + offset;
             }
         }
 

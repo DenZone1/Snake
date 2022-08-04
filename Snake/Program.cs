@@ -13,26 +13,6 @@ namespace Snake
         {
             Console.SetBufferSize(120, 30);
 
-                      
-           
-            Point p = new Point(4, 5, '*');
-            Snake snake = new Snake(p, 4, Deriction.Right);
-            snake.Drow();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-
-
-
-
             #region Рамка поля игры
 
             HorizontalLine upline = new HorizontalLine(0,78,0,'+');
@@ -47,6 +27,21 @@ namespace Snake
             VerticalLine rigntLine = new VerticalLine(0, 24, 78, '+');
             rigntLine.Drow();
             #endregion
+
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 4, Deriction.Right);
+            snake.Drow();
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
 
             Console.ReadLine();
         }
