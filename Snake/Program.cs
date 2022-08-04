@@ -32,6 +32,10 @@ namespace Snake
             Snake snake = new Snake(p, 4, Deriction.Right);
             snake.Drow();
 
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -43,7 +47,7 @@ namespace Snake
                 snake.Move();
             }
 
-            Console.ReadLine();
+            
         }
 
 
