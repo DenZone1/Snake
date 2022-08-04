@@ -32,6 +32,11 @@ namespace Snake
                 Console.WriteLine(i);
             }
 
+            numList.RemoveAt(0);
+
+            List<Point> plist = new List<Point>();
+            plist.Add(p1);
+            plist.Add(p2);
 
             Console.ReadLine();
         }
