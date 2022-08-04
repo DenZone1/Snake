@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,37 @@ namespace Snake
 {
     internal class Snake : Figure
     {
-        
-        public Snake(Point tail, int lenght, Deriction direction)//передаем класс направлений
+        Deriction direction;
+
+        public Snake(Point tail, int lenght, Deriction _direction)//передаем класс направлений
         {
+            direction = _direction;
             plist = new List<Point>();
             for (int i = 0; i < lenght; i++)
-            { 
+            {
                 Point p = new Point(tail);
                 p.Move(i, direction);
                 plist.Add(p);
-            
             }
+        }
+
+        internal void Move()
+{
+            Point tail = plist.First();
+            plist.Remove(tail);
+            Point head = GetNextPoint();
+            plist.Add(head);
+
+            tail.Clear();
+            head.Draw();
+        }
+
+        public Point GetNextPoint()
+        {
+            Point head = plist.Last();
+            Point nextPoint = new Point(head);
+            nextPoint.Move(1, direction);
+            return nextPoint;
         }
     }
 }
